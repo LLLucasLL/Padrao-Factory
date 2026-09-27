@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mensageria Multicanal</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <main class="container">
+    <section id="cadastroCard" class="card hidden">
+      <h1>Criar conta</h1>
+      <p class="subtitulo">Cadastre seus dados para receber notificações.</p>
+      <form id="cadastroForm">
+        <label>Nome de usuário<input id="cadNome" required maxlength="100"></label>
+        <label>Senha<input id="cadSenha" type="password" minlength="6" required></label>
+        <label>E-mail<input id="cadEmail" type="email" required maxlength="150"></label>
+        <label>Celular <small>(formato +5512999999999)</small><input id="cadCelular" required maxlength="20"></label>
+        <button type="submit">Cadastrar</button>
+      </form>
+      <p id="cadastroMensagem" class="mensagem"></p>
+      <button id="irLogin" class="linkButton">Já tenho uma conta</button>
+    </section>
+
+    <section id="loginCard" class="card">
+      <h1>Bem-vindo</h1>
+      <p class="subtitulo">Entre para acessar o sistema de mensageria.</p>
+      <form id="loginForm">
+        <label>Nome de usuário<input id="loginNome" required></label>
+        <label>Senha<input id="loginSenha" type="password" required></label>
+        <button type="submit">Entrar</button>
+      </form>
+      <p id="loginMensagem" class="mensagem"></p>
+      <button id="irCadastro" class="linkButton">Criar uma conta</button>
+    </section>
+
+    <section id="homeCard" class="card hidden wide">
+      <div class="homeHeader">
+        <div>
+          <p class="eyebrow">Recepção</p>
+          <h1 id="boasVindas">Olá!</h1>
+        </div>
+        <button id="logout" class="secondary">Sair</button>
+      </div>
+
+      <div class="grid2">
+        <div class="panel">
+          <h2>Dados da sessão</h2>
+          <div id="dadosUsuario"></div>
+        </div>
+        <div class="panel">
+          <h2>Factory Method</h2>
+          <p>A aplicação seleciona uma fábrica e a fábrica cria o produto concreto do canal.</p>
+          <code>Factory → criarNotificacao() → Notificacao → enviar()</code>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>Enviar nova mensagem</h2>
+        <form id="mensagemForm">
+          <label>Assunto<input id="mensagemAssunto" value="Nova mensagem"></label>
+          <label>Texto<textarea id="mensagemTexto" required>Olá! Esta é uma mensagem do sistema.</textarea></label>
+          <div class="canais">
+            <label class="check"><input type="checkbox" value="EMAIL" checked> E-mail</label>
+            <label class="check"><input type="checkbox" value="SMS" checked> SMS</label>
+            <label class="check"><input type="checkbox" value="WHATSAPP" checked> WhatsApp</label>
+            <label class="check"><input type="checkbox" value="PUSH" checked> Push</label>
+            <label class="check"><input type="checkbox" value="TELEGRAM"> Telegram</label>
+          </div>
+          <button type="submit">Enviar pelos canais selecionados</button>
+        </form>
+      </div>
+
+      <div class="panel">
+        <h2>Status dos canais</h2>
+        <div id="notificacoes"></div>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast hidden"></div>
+  <script src="/app.js"></script>
+</body>
+</html>
